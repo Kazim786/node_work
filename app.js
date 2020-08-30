@@ -5,6 +5,9 @@ const http = require('http')
 //RequestListener takes in request and response arguments
 const requestListener = (req, res) => {
     console.log(req.url, req.method, req.headers)
+    //Content type is the key. 'text/html' is the value. 
+    //In simple english the 
+    //content type you will be setting is text/html
     res.setHeader('Content-Type', 'text/html')
     res.write('<html>')
     res.write('<head><title>My First Page</title></head>')
