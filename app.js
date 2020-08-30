@@ -4,7 +4,7 @@ const http = require('http')
 
 //RequestListener takes in request and response arguments
 const requestListener = (req, res) => {
-    console.log(req)
+    console.log(req.url, req.method, req.headers)
 }
 
 
@@ -14,3 +14,5 @@ const server = http.createServer(requestListener)
 
 //server comes with many methods one of them is listen.
 server.listen(3000);
+
+//saved to git
