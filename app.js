@@ -4,7 +4,15 @@ const http = require('http')
 
 //RequestListener takes in request and response arguments
 const requestListener = (req, res) => {
-    console.log(req.url, req.method, req.headers)
+    const url = req.url;
+    if(url === '/'){
+        res.setHeader('Content-Type', 'text/html')
+        res.write('<html>')
+        res.write('<head><title>Enter Message</title></head>')
+        res.write('<body><form action= "/message" method= "POST"><input type="text" name= "message"><button type="submit">Send</button></input></form></body>')
+        res.write('</html>')
+        return res.end();
+    }
     //Content type is the key. 'text/html' is the value. 
     //In simple english the 
     //content type you will be setting is text/html
