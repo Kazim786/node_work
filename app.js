@@ -22,7 +22,7 @@ const requestListener = (req, res) => {
             console.log(chunk)
             body.push(chunk);
         }) //have to define a function for every data that is coming in. Just like we did with server. You can do anonymous function or write the function separately.
-        req.on('end', () => {
+        return req.on('end', () => {
             //This will have the input of whatever you put in the form
             const parsedBody = Buffer.concat(body).toString()
             const message = parsedBody.split('=')[1];
