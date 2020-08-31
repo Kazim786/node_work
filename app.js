@@ -34,3 +34,16 @@ const server = http.createServer(requestListener)
 server.listen(3000);
 
 //saved to git
+
+// The HTML | action Attribute is used to specify where the formdata is to be sent to the server after submission of the form. It can be used in the <form> element.
+
+// Syntax:
+
+// <form action="URL">
+// Attribute Values:
+
+// URL: It is used to specify the URL of the document where the data to be sent after the submission of the form.
+// The possible values of the URL are:
+
+// absolute URL: It points to another website link. For Example: www.gfg.org
+// relative URL: It is used to point to a file within a webpage. For Example: www.geeksforgeeks.org
