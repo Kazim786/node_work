@@ -28,11 +28,10 @@ const requestListener = (req, res) => {
             const message = parsedBody.split('=')[1];
             fileSystem.writeFileSync('message.txt', message)
             //This will create a new file called message.txt which as within it whatever we submit from the form
+            res.statusCode = 302;
+            res.setHeader('Location', '/');
+            return res.end()
         })
-        
-        res.statusCode = 302;
-        res.setHeader('Location', '/');
-        return res.end()
     }
 
     //Content type is the key. 'text/html' is the value. 
