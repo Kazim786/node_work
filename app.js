@@ -1,10 +1,12 @@
 //Created server 
 
 const http = require('http')
+const fileSystem = require('fs')
 
 //RequestListener takes in request and response arguments
 const requestListener = (req, res) => {
     const url = req.url;
+    const method = req.method;
     if(url === '/'){
         res.setHeader('Content-Type', 'text/html')
         res.write('<html>')
@@ -13,6 +15,26 @@ const requestListener = (req, res) => {
         res.write('</html>')
         return res.end();
     }
+
+    if(url === '/message' && method === 'POST'){
+        const body = [];
+        req.on('data', (chunk) => {
+            console.log(chunk)
+            body.push(chunk);
+        }) //have to define a function for every data that is coming in. Just like we did with server. You can do anonymous function or write the function separately.
+        req.on('end', () => {
+            //This will have the input of whatever you put in the form
+            const parsedBody = Buffer.concat(body).toString()
+            const message = parsedBody.split('=')[1];
+            fileSystem.writeFileSync('message.txt', message)
+            //This will create a new file called message.txt which as within it whatever we submit from the form
+        })
+        
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return res.end()
+    }
+
     //Content type is the key. 'text/html' is the value. 
     //In simple english the 
     //content type you will be setting is text/html
