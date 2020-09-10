@@ -37,18 +37,33 @@
 
 const express = require('express');
 
+const bodyParser = require('body-parser')
+
 const app = express();
 
-app.use()
 
-app.use('/add-product',(req, res, next) => {
+app.use(bodyParser.urlencoded({extended: false}))
+//config option extended false. To comply with message in terminal
+
+app.use('/add-product',(req, res, next) => { 
     console.log('object')
     res.send('<form action= "/product" method="POST"> <input type="text" name="title"><button type="submit">Add Product</button></form>')
     
 })
 
-app.use('/product', (req, res, next) => {
-    console.log(req.body) //This outputs undefined because request doesnt parse the body
+// app.use('/product', (req, res, next) => {
+    //app.use always executes. Not just for POST but for GET as well
+//     console.log(req.body) //This outputs undefined because request doesnt parse the body.
+//     //You have to add body parser. So npm install --save body-parser then save it to variable bodyParser. Put variable into middleware above with urlencoded() function
+//     res.redirect('/')
+// })
+
+app.post('/product', (req, res, next) => {
+    //But if we use app.get it'll work for only get requests. 
+    //If we use app.post it will work for only post requests.
+    //This is same as app.use just more specific
+    console.log(req.body) //This outputs undefined because request doesnt parse the body.
+    //You have to add body parser. So npm install --save body-parser then save it to variable bodyParser. Put variable into middleware above with urlencoded() function
     res.redirect('/')
 })
 
