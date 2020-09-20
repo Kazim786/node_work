@@ -41,8 +41,24 @@ const bodyParser = require('body-parser') //now requests body object will get pa
 
 const app = express();
 
+const adminRoutes = require('./routes/admin') //Order matters. Have to put this on top otherwise youll never reach it.
+
+const shopRoutes = require('./routes/shop')
 
 app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(adminRoutes); //Order matters
+
+app.use(shopRoutes);
+
+
+
+
+app.listen(3000) // acts as server 
+
+//**********NOTES */
+
+
 //config option extended false. To comply with message in terminal
 
 // app.use('/add-product',(req, res, next) => { 
@@ -69,10 +85,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 //     res.redirect('/')
 // }) //Gonna put this into admin.js file
 
-
-app.use('/',(req, res, next) => {
-    console.log('object')
-    res.send('Hello from express :D')
-})
-
-app.listen(3000) // acts as server 
+// app.use('/',(req, res, next) => {
+//     console.log('object')
+//     res.send('Hello from express :D')
+// })

@@ -2,9 +2,10 @@ const express = require('express')
 
 const router = express.Router()
 
-//router functions work the same way app functions work. It also has .get .post .use
+//router functions work the same way app functions work. It also has .get .post .us
 
-router.use('/add-product',(req, res, next) => { 
+//turned .use to .get. You dont have to but its better if you do.
+router.get('/add-product',(req, res, next) => { 
     console.log('object')
     res.send('<form action= "/product" method="POST"> <input type="text" name="title"><button type="submit">Add Product</button></form>')
     
