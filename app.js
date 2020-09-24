@@ -36,6 +36,7 @@
 //Gonna work with Routes and middleware now 
 
 const path = require('path')
+//this makes the HTML pages paths
 
 const express = require('express');
 
@@ -62,6 +63,7 @@ app.use(shopRoutes);
 
 app.use((req, res, next) => {
     //
+
     res.status(404).sendFile(path.join(__dirname, './', 'views', 'notfound.html'))
 })
 
