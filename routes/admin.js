@@ -5,13 +5,14 @@ const router = express.Router()
 //router functions work the same way app functions work. It also has .get .post .us
 
 //turned .use to .get. You dont have to but its better if you do.
+// /admin/add-product => GET
 router.get('/add-product',(req, res, next) => { 
     console.log('object')
-    res.send('<form action= "/product" method="POST"> <input type="text" name="title"><button type="submit">Add Product</button></form>')
+    res.send('<form action= "/admin/add-product" method="POST"> <input type="text" name="title"><button type="submit">Add Product</button></form>')
     
 })
-
-router.post('/product', (req, res, next) => {
+// /admin/add-product => POST
+router.post('/add-product', (req, res, next) => {
     //But if we use app.get it'll work for only get requests. 
     //If we use app.post it will work for only post requests.
     //This is same as app.use just more specific

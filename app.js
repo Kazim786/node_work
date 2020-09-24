@@ -41,16 +41,20 @@ const bodyParser = require('body-parser') //now requests body object will get pa
 
 const app = express();
 
-const adminRoutes = require('./routes/admin') //Order matters. Have to put this on top otherwise youll never reach it.
+const adminRoutes = require('./routes/admin') //Order doesnt matter when importing. Have to put this on top otherwise youll never reach it.
 
 const shopRoutes = require('./routes/shop')
 
 app.use(bodyParser.urlencoded({extended: false}))
 
-app.use(adminRoutes); //Order matters
+app.use("/admin", adminRoutes); 
 
 app.use(shopRoutes);
 
+//404 page
+app.use((req, res, next) => {
+    res.status(404).send('<h1>Page not Found</h1>')
+})
 
 
 
