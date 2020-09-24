@@ -37,7 +37,7 @@
 
 const express = require('express');
 
-const bodyParser = require('body-parser') //now requests body object will get parsed as soon as body parser is put into app.use middleware
+const bodyParser = require('body-parser') //now requests body object will get parsed as soon as body parser is put into app.use middleware. It parses JSON requests
 
 const app = express();
 
