@@ -50,6 +50,8 @@ const shopRoutes = require('./routes/shop')
 
 app.use(bodyParser.urlencoded({extended: false}))
 
+//We have to do this for all the pages so they work in the website. Everything has to be
+//consolidated into app.js
 app.use("/admin", adminRoutes); 
 
 app.use(shopRoutes);
