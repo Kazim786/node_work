@@ -63,6 +63,7 @@ app.use(shopRoutes);
 
 //serving 404 html page
 
+//if url path doesnt match any of the established paths then this runs 
 app.use((req, res, next) => {
     //
 
